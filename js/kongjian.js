@@ -53,9 +53,11 @@ $('.bianhuan').mousemove(function () {
             xcenter = bBox.width / 2 + parseInt(ele.getAttribute("x"));
         var
             ycenter = bBox.height / 2 + parseInt(ele.getAttribute("y"));
-        var
+        var s = "";
+        if(parseInt(ele.getAttribute("transform").match(/[- +]?\d+/g)[0])!=document.getElementById("rect-rotation").childNodes[1].childNodes[0].value){
             s = "rotate(" + document.getElementById("rect-rotation").childNodes[1].childNodes[0].value.toString() + " " + xcenter.toString() + "," + ycenter.toString() + ")";
-        ele.setAttribute("transform", s);
+            ele.setAttribute("transform", s);
+        }
         ele.setAttribute("rx", document.getElementById("rect-roundness").childNodes[1].childNodes[0].value.toString());
         ele.setAttribute("fill-opacity", (document.getElementById("rect-fill-opacity").childNodes[1].childNodes[0].value / 10).toString());
         socket.emit("rectbh", {
@@ -157,7 +159,9 @@ function rect_bh_buff(ch) {
         ele = document.getElementById(ch.id);
     ele.setAttribute("width", ch.width);
     ele.setAttribute("height", ch.height);
-    ele.setAttribute("transform", ch.s);
+    if(ch.s!=""){
+        ele.setAttribute("transform", ch.s);
+    }
     ele.setAttribute("rx", ch.rx);
     ele.setAttribute("fill-opacity", ch.fillopacity);
 }

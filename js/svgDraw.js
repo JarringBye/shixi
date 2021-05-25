@@ -843,7 +843,7 @@ $('#zujian').click(function () {
             }
         })
         $('#svg-all').off("mouseup");
-        $('#svg-all').off("mousedown");
+        $('#tubiaoku').children().off("mousedown");
         $('#tubiaoku').children().on("mousedown",function (e) {
             change = true;
             if (change != false) {

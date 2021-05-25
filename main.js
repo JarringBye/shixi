@@ -236,7 +236,7 @@ io.sockets.on("connection", (socket) => {
             console.log(cnm);
         }
         console.log(ruler,msgs,chs);
-        socket.emit("load", {
+        io.sockets.emit("load", {
             name: "load",
             msgs: msgs,
             chs: chs

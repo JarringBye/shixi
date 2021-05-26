@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="329db8c6-7b8d-42a4-86e9-174797f58580" name="默认的" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw.html" beforeDir="false" afterPath="$PROJECT_DIR$/draw.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/keyboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/keyboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/kongjian.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/kongjian.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/selector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/svgDraw.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/svgDraw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/svgdianji.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/svgdianji.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +62,23 @@
       <workItem from="1621926388013" duration="22000" />
       <workItem from="1621929004716" duration="3671000" />
       <workItem from="1621939286279" duration="216000" />
-      <workItem from="1622029819854" duration="32216000" />
+      <workItem from="1622029819854" duration="33631000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="183" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1622031351933">

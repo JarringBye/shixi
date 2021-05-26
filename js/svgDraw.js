@@ -1,3 +1,5 @@
+$(document).bind("contextmenu",function(){return false;});
+$(document).bind("selectstart",function(){return false;});
 var svg = document.querySelector('#svg');
 //flag变量：通信戳同步id
 //监听
@@ -25,6 +27,15 @@ socket.on("load", function (data) {
                 dealCh(ch);
             }
         }
+    }
+    var firstnode = document.getElementById("svg").children[0];
+    var length = $("svg").children("g").length;
+    var node = firstnode;
+    var i = 0;
+    while (i < length) {
+        node.removeAttribute("opacity");
+        node = node.nextSibling;
+        ++i;
     }
 });
 var path;
@@ -203,7 +214,6 @@ function draw_jiantou_start(msg) {
     $('#svg').append(group);
     group.append(jiantou);
     mkid = "end_" + flag;
-    console.log(document.getElementById("df").innerHTML);
     var s = document.getElementById("df").innerHTML + (
         "                    <marker id=\"" + mkid + "\"\n" +
         "                            markerUnits=\"strokeWidth\"\n" +
@@ -430,7 +440,6 @@ function draw_tubiaoku(msg) {
 function node_clone(msg) {
     var id = "svg_" + msg.id;
     var flag = msg.flag;
-    console.log(document.getElementById(id).parentElement.innerHTML);
     var pianyi = msg.pianyi;
     var clone_node = document.getElementById(id).parentElement.cloneNode(true);
     var newid = "svg_" + flag;
@@ -439,6 +448,13 @@ function node_clone(msg) {
     var newpianyiy = parseInt(pianyi[1]) + 5;
     var pianyis = "translate(" + newpianyix.toString() + "," + newpianyiy.toString() + ")";
     clone_node.setAttribute("transform", pianyis);
+    if(msg.duoxuan!=true){
+        clone_node.setAttribute("opacity","");
+    }
+    else{
+        idarray.push(newid);
+        clone_node.setAttribute("opacity","0.5");
+    }
     $("#svg").append(clone_node);
 }
 
@@ -786,7 +802,8 @@ $('#note').click(function () {
             painting = true;
             var p_x = e.offsetX;
             var p_y = e.offsetY;
-            $('#textInput').css('top', p_y - 20).css('left', p_x).attr('txtX', p_x).attr('txtY', p_y).show()
+            $('#textInput').css('top', p_y - 20).css('left', p_x).attr('txtX', p_x).attr('txtY', p_y).show();
+            document.getElementById("textin").focus();
         }
     });
     $('#svg-all').on("mouseup", function () {
@@ -806,18 +823,19 @@ var numFont = '25px';
 
 function submit(e) {
     var txt = $(e).prev().val()
-    var X = $(e).parent('#textInput').attr('txtX')
-    var Y = $(e).parent('#textInput').attr('txtY')
-    var color = $("#color").val();
-    socket.emit("text", {
-        x: X,
-        y: Y,
-        color: color,
-        txt: txt,
-        width: numFont
-    })
-    socket.emit("node");
-
+    if(txt!=""){
+        var X = $(e).parent('#textInput').attr('txtX')
+        var Y = $(e).parent('#textInput').attr('txtY')
+        var color = $("#color").val();
+        socket.emit("text", {
+            x: X,
+            y: Y,
+            color: color,
+            txt: txt,
+            width: numFont
+        })
+        socket.emit("node");
+    }
     $(e).parent('#textInput').hide();
     $(e).prev().val('');
 }

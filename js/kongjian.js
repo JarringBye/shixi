@@ -30,7 +30,6 @@ function jiankong(bh, ele) {
         document.getElementById("path-fill-opacity").childNodes[1].childNodes[0].value = (parseInt(ele.getAttribute("fill-opacity")) * 10).toString();
 
     } else {
-        console.log(ele);
         var
             reg = ele.getAttribute("transform").match(/[- +]?\d+/g);
         document.getElementById(bh.replace("-bh", "") + "-rotation").childNodes[1].childNodes[0].value = parseInt(reg[0]);
@@ -38,9 +37,9 @@ function jiankong(bh, ele) {
 
 }
 
-$('.bianhuan').mousemove(function () {
+function change_ok(e) {
     var
-        bh = this.id;
+        bh = e.parentElement.id;
     var
         ele = document.getElementById("svg").lastElementChild.firstElementChild;//内元素
     //计算旋转中心点
@@ -68,6 +67,7 @@ $('.bianhuan').mousemove(function () {
             rx: document.getElementById("rect-roundness").childNodes[1].childNodes[0].value.toString(),
             fillopacity: (document.getElementById("rect-fill-opacity").childNodes[1].childNodes[0].value / 10).toString()
         })
+        socket.emit("node");
     } else if (bh == "circle-bh") {
         ele.setAttribute("r", document.getElementById("circle-r").childNodes[1].childNodes[0].value.toString());
         ele.setAttribute("fill-opacity", (document.getElementById("circle-fill-opacity").childNodes[1].childNodes[0].value / 10).toString());
@@ -76,6 +76,7 @@ $('.bianhuan').mousemove(function () {
             r: document.getElementById("circle-r").childNodes[1].childNodes[0].value.toString(),
             fillopacity: (document.getElementById("circle-fill-opacity").childNodes[1].childNodes[0].value / 10).toString()
         })
+        socket.emit("node");
     } else if (bh == "line-bh") {
         var
             xcenter = (parseInt(ele.getAttribute("x1")) + parseInt(ele.getAttribute("x2"))) / 2;
@@ -88,6 +89,7 @@ $('.bianhuan').mousemove(function () {
             id: ele.id,
             s: s
         })
+        socket.emit("node");
     } else if (bh == "path-bh") {
         var
             reg = ele.getAttribute("d").match(/[- +]?\d+(\.\d+)?/g);
@@ -99,7 +101,6 @@ $('.bianhuan').mousemove(function () {
         var
             s = "rotate(" + document.getElementById("path-rotation").childNodes[1].childNodes[0].value.toString() + " " + xcenter.toString() + "," + ycenter.toString() + ")";
         ele.setAttribute("fill-opacity", (document.getElementById("path-fill-opacity").childNodes[1].childNodes[0].value / 10).toString());
-
         ele.setAttribute("transform", s);
         socket.emit("pathbh", {
             id: ele.id,
@@ -107,6 +108,7 @@ $('.bianhuan').mousemove(function () {
             fillopacity: (document.getElementById("path-fill-opacity").childNodes[1].childNodes[0].value / 10).toString()
 
         })
+        socket.emit("node");
     } else if (bh == "polygon-bh") {
         var
             width = document.getElementById("polygon-width").childNodes[1].childNodes[0].value;
@@ -135,6 +137,7 @@ $('.bianhuan').mousemove(function () {
             l: l,
             fillopacity: (document.getElementById("polygon-fill-opacity").childNodes[1].childNodes[0].value / 10).toString()
         })
+        socket.emit("node");
     } else {//text
         var
             xcenter = bBox.width / 2 + parseInt(ele.getAttribute("x"));
@@ -151,8 +154,9 @@ $('.bianhuan').mousemove(function () {
             fontsize: document.getElementById("text-size").childNodes[1].childNodes[0].value.toString() + "px",
             content: document.getElementById("text-content").childNodes[1].value
         })
+        socket.emit("node");
     }
-})
+}
 
 function rect_bh_buff(ch) {
     var

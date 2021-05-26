@@ -2,18 +2,31 @@
 let express = require('express')
 let app = express();
 let server = require('http').Server(app);
-let io = require('socket.io')(server);
+let io = require('socket.io')(server,{cors : true});
+
+app.all("*",function(req,res,next){
+    //设置允许跨域的域名，*代表允许任意域名跨域
+    res.header("Access-Control-Allow-Origin","http://localhost:5716");
+    //允许的header类型
+    res.header("Access-Control-Allow-Headers","content-type");
+    //跨域允许的请求方式
+    res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();
+});
+
 //提供静态文件服务，这样就能找到你的`jquery-2.0.3.min.js`文件
 app.use('/', express.static(__dirname + '/'));
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/draw.html');
 });
 io.on('connection', function () {
-    console.log('a user connected');
 });
 // 最好不要直接监听在80端口，改成8888
 server.listen(5716, function () {
-    console.log('listening on *:8888');
+    console.log("listen on 5716 port")
 });
 io.sockets.on("connection", (socket) => {
     socket.on("line_start", function (msg) {
@@ -199,7 +212,6 @@ io.sockets.on("connection", (socket) => {
         msg.name = "clone";
         msg.flag = msgs.length;
         io.sockets.emit("message", msg);
-        console.log(msg);
     })
 
     socket.on("node", function () {
@@ -208,9 +220,7 @@ io.sockets.on("connection", (socket) => {
     socket.on("chehui", function () {
         var cnm = ruler.length - 2;
         for (; cnm >= 0; cnm--) {
-            console.log(cnm, ruler[cnm]);
             if (cnm == 0) {
-                console.log("i=0");
                 msgs.length = 0;
                 chs.length = 0;
                 ruler.length = 0;
@@ -220,22 +230,16 @@ io.sockets.on("connection", (socket) => {
                 });
             }
             else if (ruler[cnm] == "node") {
-                console.log("tnode");
                 ruler.length = cnm + 1;
                 break;
             } else if (ruler[cnm] == "msg") {
-                console.log("tmsg");
                 msgs.pop();
-                console.log(msgs.length);
                 continue;
             } else if (ruler[cnm] = "ch") {
-                console.log("tch");
                 chs.pop();
                 continue;
             }
-            console.log(cnm);
         }
-        console.log(ruler,msgs,chs);
         io.sockets.emit("load", {
             name: "load",
             msgs: msgs,

@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="329db8c6-7b8d-42a4-86e9-174797f58580" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw.html" beforeDir="false" afterPath="$PROJECT_DIR$/draw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/keyboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/keyboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/kongjian.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/kongjian.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/selector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/svgDraw.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/svgDraw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/svgdianji.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/svgdianji.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,11 +48,23 @@
       <option name="presentableId" value="Default" />
       <updated>1621926386863</updated>
       <workItem from="1621926388013" duration="22000" />
-      <workItem from="1621929004716" duration="2546000" />
+      <workItem from="1621929004716" duration="3671000" />
+      <workItem from="1621939286279" duration="216000" />
+      <workItem from="1622029819854" duration="32216000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="183" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1622031351933">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="183" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1622031351933" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1622041279508">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/0.0.1440.900@0.0.1440.900" timestamp="1622041279508" />
   </component>
 </project>

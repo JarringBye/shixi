@@ -550,6 +550,13 @@
             float: left;
             margin: 0 5px 5px 0;
         }
+        .bhqr {
+            background: cornflowerblue;
+            width: 80px;
+            height: auto;
+            border-radius: 10px;
+            text-align: center;
+        }
 
         .textcontent {
             background: #3f3f3c;
@@ -703,12 +710,12 @@
             <svg id="svg-selector" style="pointer-events: none"></svg>
             <svg id="svg" height="800px" width="1200px"></svg>
             <!--箭头def-->
-            <defs id = "df"></defs>
+            <defs id="df"></defs>
         </svg>
         <div id="textInput" class="btn-group" txtX='702' txtY='309' style="display: none; left: 702px; top: 309px;">
-            <input type="text" maxlength="100" class="btn btn-default">
-            <button tabindex="-1" onclick="submit(this)" class="btn btn-default ng-binding">提交</button>
-            <button tabindex="-1" onclick="cancel(this)" class="btn btn-default ng-binding">取消</button>
+            <input id="textin" type="text" maxlength="300" class="btn btn-default">
+            <button id="textsubmit" tabindex="-1" onclick="submit(this)" class="btn btn-default ng-binding">提交</button>
+            <button id="textcancel" tabindex="-1" onclick="cancel(this)" class="btn btn-default ng-binding">取消</button>
         </div>
 
     </svg>
@@ -734,6 +741,7 @@
                                                                                min="0" max="100"/></label>
     <label id="rect-fill-opacity" class="bianhuanzj"><span>F-opac</span><input data-numscrubber type="number" value=""
                                                                                min="0" max="10"/></label>
+    <button class="bhqr" onclick="change_ok(this)">确认</button>
 
 </div>
 <!--圆形-->
@@ -743,6 +751,7 @@
                                                                  max="1200"/></label>
     <label id="circle-fill-opacity" class="bianhuanzj"><span>F-opac</span><input data-numscrubber type="number" value=""
                                                                                  min="0" max="10"/></label>
+    <button class="bhqr" onclick="change_ok(this)">确认</button>
 
 </div>
 <!--直线 箭头-->
@@ -750,6 +759,8 @@
     <h4 style="color: white">Line</h4>
     <label id="line-rotation" class="bianhuanzj"><span>Rotation</span><input data-numscrubber type="number" value=""
                                                                              min="-180" max="180"/></label>
+    <button class="bhqr" onclick="change_ok(this)">确认</button>
+
 </div>
 <!--路径-->
 <div id="path-bh" class="bianhuan" style="display: none">
@@ -758,6 +769,8 @@
                                                                              min="-180" max="180"/></label>
     <label id="path-fill-opacity" class="bianhuanzj"><span>F-opac</span><input data-numscrubber type="number" value=""
                                                                                min="0" max="10"/></label>
+    <button class="bhqr" onclick="change_ok(this)">确认</button>
+
 </div>
 <!--文本-->
 <div id="text-bh" class="bianhuan" style="display: none">
@@ -768,6 +781,8 @@
                                                                          min="10" max="40"/></label>
     <label id="text-content" class="textcontent"><span>Text-content</span><input type="text" value=""
                                                                                  style="width: 100%"/></label>
+    <button class="bhqr" onclick="change_ok(this)">确认</button>
+
 </div>
 <!--菱形-->
 <div id="polygon-bh" class="bianhuan" style="display: none">
@@ -780,6 +795,8 @@
                                                                             min="1" max="1000"/></label>
     <label id="polygon-fill-opacity" class="bianhuanzj"><span>F-opac</span><input data-numscrubber type="number"
                                                                                   value="" min="0" max="10"/></label>
+    <button class="bhqr" onclick="change_ok(this)">确认</button>
+
 
 </div>
 <script src="./js/jquery.js"></script>
@@ -803,8 +820,6 @@
 <script type="text/javascript" src="./js/kongjian.js"></script>
 
 <script type="text/javascript" src="./js/clear.js"></script>
-
-
 
 
 </body>

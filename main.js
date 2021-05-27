@@ -218,7 +218,8 @@ io.sockets.on("connection", (socket) => {
         ruler.push("node");
     })
     socket.on("seat",function (){
-        var theLast = ruler.pop();
+        console.log(ruler);
+        var theLast = ruler[ruler.length-1];
         if(theLast != "node"){
             socket.emit("load",{
                 name:"load",

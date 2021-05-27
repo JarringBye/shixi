@@ -39,15 +39,7 @@ $("#pointer").click(function () {
                 pianyi.length = 0;
                 jihe.length = 0;
                 //将所有svg元素设为不透明加以区分
-                var firstnode = document.getElementById("svg").children[0];
-                var length = $("svg").children("g").length;
-                var node = firstnode;
-                var i = 0;
-                while (i < length) {
-                    node.removeAttribute("opacity");
-                    node = node.nextSibling;
-                    ++i;
-                }
+                clear_op();
                 //关闭上次面板
                 if (lastele != "") {
                     bh = lastele + "-bh";

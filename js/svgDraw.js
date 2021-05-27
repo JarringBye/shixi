@@ -28,15 +28,7 @@ socket.on("load", function (data) {
             }
         }
     }
-    var firstnode = document.getElementById("svg").children[0];
-    var length = $("svg").children("g").length;
-    var node = firstnode;
-    var i = 0;
-    while (i < length) {
-        node.removeAttribute("opacity");
-        node = node.nextSibling;
-        ++i;
-    }
+    clear_op();
 });
 var path;
 var sline;
@@ -780,8 +772,26 @@ $("#xiazai").click(function () {
     clear_op();
     $(this).parent().addClass('toolbar-active').siblings().removeClass('toolbar-active');
     document.getElementById("tubiaoku").setAttribute("style", "display:none");
-    var filename = 'UESTC电子白板' + (new Date()).getTime()
-    saveSvgAsPng(document.getElementById("workspace"), filename + ".png");
+    new Dialog({
+        style: 'confirm',
+        title: '',
+        hideTitle: true,
+        area: ['400px', '200px'],
+        content: '选择保存方式',
+        confirmBtn: '下载.png文件',
+        cancelBtn: '复制.svg或者取消',
+        onClickConfirmBtn: function () {
+            console.log('点击左侧按钮的回调函数');
+            var filename = 'UESTC电子白板' + (new Date()).getTime();
+            saveSvgAsPng(document.getElementById("workspace"), filename + ".png");
+        },
+        onClickCancelBtn: function () {
+            console.log('点击右侧按钮的回调函数');
+            saveSvgAsSF();
+        }
+    })
+
+
 });
 //--------文本
 $('#note').click(function () {

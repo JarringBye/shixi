@@ -1,5 +1,7 @@
-#UESTC协同svg作图
-##Usage
+# UESTC协同svg作图
+
+## Usage
+
 修改[main.js](main.js)和[svgDraw.js](js/svgDraw.js)文件中的服务器地址为使用者的本地或者服务器域名/地址
 
 安装依赖：

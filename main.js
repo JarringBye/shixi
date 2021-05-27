@@ -26,7 +26,7 @@ io.on('connection', function () {
 });
 // 最好不要直接监听在80端口，改成8888
 server.listen(5716, function () {
-    console.log("listen on 5716 port")
+    console.log("listen port:5716")
 });
 io.sockets.on("connection", (socket) => {
     socket.on("line_start", function (msg) {

@@ -420,14 +420,16 @@
             -webkit-user-select: none; /*webkit浏览器*/
             -ms-user-select: none; /*IE10*/
             -khtml-user-select: none; /*早期浏览器*/
-            font-size: 20px;
+            font-size: 16px;
             font-family: MicrosoftYaHei;
-            font-weight: 400;
-            color: rgba(0, 160, 233, 1);
+            font-weight: bolder;
+            color: darkslateblue;
+            margin-top: 30px;
             margin-bottom: 30px;
             text-align: center
         }
 
+        /*#ssas{}*/
         #textInput {
             position: absolute;
             top: 31px;
@@ -534,9 +536,8 @@
             -khtml-user-select: none; /*早期浏览器*/
             margin-left: 6px;
             width: 132px;
-            height: 500px;
+            height: 800px;
             float: left;
-
         }
 
         .bianhuanzj {
@@ -550,12 +551,22 @@
             float: left;
             margin: 0 5px 5px 0;
         }
+
         .bhqr {
-            background: cornflowerblue;
+            background: #3f3f3c;
+            position: relative;
             width: 80px;
             height: auto;
+            border: white solid 3px;
             border-radius: 10px;
             text-align: center;
+            color: white;
+        }
+
+        .bhqr:active {
+
+            top: 2px; /**向下偏移2px **/
+
         }
 
         .textcontent {
@@ -579,13 +590,14 @@
             -moz-appearance: textfield;
         }
     </style>
+
 </head>
 
 <body id="bj">
 
 <div id="draw" style="">
     <div id="kuang">
-        <div class="drawFb"> 画板</div>
+        <div class="drawFb"> 协同SVG绘图</div>
         <div class="upload k1">
             <input type="file" class="upload_pic" id="upload"/>
         </div>
@@ -800,14 +812,14 @@
 
 </div>
 <script src="./js/jquery.js"></script>
-<!-- <script src="../layer/layer.js"></script> -->
-<!-- <script src="./js/rgbcolor.min.js"></script>
-<script src="./js/stackblur.min.js"></script> -->
+<script type="text/javascript" src="js/diyDialog.js"></script>
 <script type="text/javascript" src="./js/numscrubber.js"></script>
 <script type="text/javascript">
     Numscrubber.init();
 </script>
 <script src="./js/saveSvgAsPng.js"></script>
+
+<script src="./js/saveSvgAsSF.js"></script>
 
 <script type="text/javascript" src="./js/selector.js"></script>
 

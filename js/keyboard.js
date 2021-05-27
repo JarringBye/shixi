@@ -1,6 +1,7 @@
 document.onkeydown = function (e) {
     if ($('#pointer').parent().hasClass('toolbar-active')) {
         if (e.keyCode == 70) {//填充
+            socket.emit("seat");
             if (dx != true) {//单选
                 if (change != false) {
                     document.getElementById("svg").lastElementChild.firstElementChild.setAttribute("fill", $("#color").val());
@@ -29,6 +30,7 @@ document.onkeydown = function (e) {
 
         }
         if (e.keyCode == 8) {//删除
+            socket.emit("seat");
             if (dx != true) {//单选
                 if (change != false) {
                     var id = document.getElementById("svg").lastElementChild.firstElementChild.getAttribute("id").match(/[1-9][0-9]*/g)[0];
@@ -55,6 +57,7 @@ document.onkeydown = function (e) {
             }
         }
         if ((e.keyCode == 65) && (e.ctrlKey)) {//全选
+            socket.emit("seat");
             if (change == false) {//如果按键属于释放状态（无操作状态）
                 if (lastele != '') {
                     var bh = lastele + "-bh"
@@ -80,6 +83,7 @@ document.onkeydown = function (e) {
             }
         }
         if ((e.keyCode == 86) && (e.ctrlKey)) {//克隆 ctrl+v
+            socket.emit("seat");
             if (dx != true) {
                 if (change != false) {
                     // var clone_id = document.getElementById("svg").lastChild.children[0].getAttribute("id").match(/[- +]?\d+/g)[0];

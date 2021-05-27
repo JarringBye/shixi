@@ -14,9 +14,9 @@ $("#pointer").click(function () {
     var selector = false;
     var id;
     var bh;
+    var pianyi = new Array();
     change = false;
     idarray.length = 0;
-    var pianyi = new Array();
     jihe.length = 0;
     $('#svg').off("mousedown");
     $('#workspace').off("mousemove");
@@ -32,6 +32,7 @@ $("#pointer").click(function () {
     //分单选多选 若多选只需保存鼠标初始坐标
     $("#svg").on("mousedown", "g", function (e) {
         if ($('#pointer').parent().hasClass('toolbar-active')) {
+            socket.emit("seat");
             change = true//表示鼠标按下状态 准备do some changes
             if (dx != true) {//单选
                 //清空多选相关的数据
@@ -196,6 +197,7 @@ $("#pointer").click(function () {
     })
 //多选初始化
     $("#svg-backgroud").on("mousedown", function (e) {
+        socket.emit("seat");
         dx = false;
         change = false;
         //点击空白取消控制面板显示

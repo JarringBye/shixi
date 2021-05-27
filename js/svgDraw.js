@@ -479,6 +479,7 @@ $('#Line').click(function () {
             painting = true;
             p_x = e.offsetX;
             p_y = e.offsetY;
+            socket.emit("seat");
             socket.emit("line_start", {
                 x: p_x,
                 y: p_y,
@@ -526,6 +527,7 @@ $('#sline').click(function () {
             painting = true;
             p_x = e.offsetX;
             p_y = e.offsetY;
+            socket.emit("seat");
             socket.emit("sline_start", {
                 x: p_x,
                 y: p_y,
@@ -575,6 +577,7 @@ $('#jiantou').click(function () {
             painting = true;
             p_x = e.offsetX;
             p_y = e.offsetY;
+            socket.emit("seat");
             socket.emit("jiantou_start", {
                 x: p_x,
                 y: p_y,
@@ -624,6 +627,7 @@ $('#rect').click(function () {
             painting = true;
             p_x = e.offsetX;
             p_y = e.offsetY;
+            socket.emit("seat");
             socket.emit("rect_start", {
                 x: p_x,
                 y: p_y,
@@ -673,6 +677,7 @@ $('#diamond').click(function () {
             painting = true;
             p_x = e.offsetX;
             p_y = e.offsetY;
+            socket.emit("seat");
             socket.emit("diamond_start", {
                 x: p_x,
                 y: p_y,
@@ -722,6 +727,7 @@ $('#circle').click(function () {
             painting = true;
             p_x = e.offsetX;
             p_y = e.offsetY;
+            socket.emit("seat");
             socket.emit("circle_start", {
                 x: p_x,
                 y: p_y,
@@ -809,6 +815,7 @@ $('#note').click(function () {
     })
     $('#svg-all').on("mousedown", function (e) {
         if ($('#note').parent().hasClass('toolbar-active')) {
+            socket.emit("seat");
             painting = true;
             var p_x = e.offsetX;
             var p_y = e.offsetY;
@@ -875,6 +882,7 @@ $('#zujian').click(function () {
         $('#tubiaoku').children().on("mousedown",function (e) {
             change = true;
             if (change != false) {
+                socket.emit("seat");
                 this.setAttribute("style", "border:1px solid rgba(34, 34, 34, 1)");
                 $('#tubiaoku').children().off('mouseover');
                 var i = 0;

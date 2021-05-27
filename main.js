@@ -217,6 +217,20 @@ io.sockets.on("connection", (socket) => {
     socket.on("node", function () {
         ruler.push("node");
     })
+    socket.on("seat",function (){
+        var theLast = ruler.pop();
+        if(theLast != "node"){
+            socket.emit("load",{
+                name:"load",
+                msgs:msgs,
+                chs:chs
+            })
+        }
+        else{
+
+        }
+        //ruler.push("seat");
+    })
     socket.on("chehui", function () {
         var cnm = ruler.length - 2;
         for (; cnm >= 0; cnm--) {

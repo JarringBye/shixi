@@ -38,6 +38,7 @@ function jiankong(bh, ele) {
 }
 
 function change_ok(e) {
+    socket.emit("seat");
     var
         bh = e.parentElement.id;
     var

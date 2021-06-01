@@ -2,19 +2,15 @@
 let express = require('express')
 let app = express();
 let server = require('http').Server(app);
-let io = require('socket.io')(server,{cors : true});
-
-app.all("*",function(req,res,next){
+let io = require('socket.io')(server, {cors: true});
+var connid="";
+app.all("*", function (req, res, next) {
     //设置允许跨域的域名，*代表允许任意域名跨域
-<<<<<<< HEAD
-    res.header("Access-Control-Allow-Origin", "http://localhost:5716");
-=======
-    res.header("Access-Control-Allow-Origin","http://www.lalila.top:5716");
->>>>>>> parent of 62d9c32 (tongbu)
+    res.header("Access-Control-Allow-Origin", "http://lalila.top:5716");
     //允许的header类型
-    res.header("Access-Control-Allow-Headers","content-type");
+    res.header("Access-Control-Allow-Headers", "content-type");
     //跨域允许的请求方式
-    res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
+    res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
     if (req.method.toLowerCase() == 'options')
         res.send(200);  //让options尝试请求快速结束
     else
@@ -33,18 +29,14 @@ server.listen(5716, function () {
     console.log("listen port:5716")
 });
 io.sockets.on("connection", (socket) => {
-    console.log(socket.conn.id);
-    console.log(socket.id);
     socket.on("line_start", function (msg) {
-<<<<<<< HEAD
-        console.log(socket.id);
         var theLast;
         if (ruler.length == 0) {
             theLast = "";
         } else {
             theLast = ruler[ruler.length - 1];
         }
-        if (theLast != "node" && theLast != "") {
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
             socket.emit("load", {
                 name: "load",
                 msgs: msgs,
@@ -57,20 +49,29 @@ io.sockets.on("connection", (socket) => {
             msg.flag = msgs.length;
             io.sockets.emit("message", msg);
         }
-=======
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "line_start";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
->>>>>>> parent of 62d9c32 (tongbu)
+
     })
     socket.on("line_moving", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "line_moving";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "line_moving";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
+
     })
     socket.on("sline_start", function (msg) {
         msgs.push(msg);
@@ -246,9 +247,6 @@ io.sockets.on("connection", (socket) => {
     socket.on("node", function () {
         ruler.push("node");
     })
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     socket.on("seat", function () {
         console.log(ruler);
         var theLast;
@@ -256,35 +254,14 @@ io.sockets.on("connection", (socket) => {
             theLast = "";
         } else {
             theLast = ruler[ruler.length - 1];
-=======
-=======
->>>>>>> parent of cc7cd55 (update)
-    socket.on("seat",function (){
-        var theLast = ruler.pop();
-=======
-    socket.on("seat",function (){
-        console.log(ruler);
-        var theLast = ruler[ruler.length-1];
->>>>>>> parent of 62d9c32 (tongbu)
-        if(theLast != "node"){
-            socket.emit("load",{
-                name:"load",
-                msgs:msgs,
-                chs:chs
-<<<<<<< HEAD
-            })
->>>>>>> parent of cc7cd55 (update)
         }
         if (theLast != "node" && theLast != "") {
             socket.emit("load", {
                 name: "load",
                 msgs: msgs,
                 chs: chs
-=======
->>>>>>> parent of 62d9c32 (tongbu)
             })
-        }
-        else{
+        } else {
 
         }
         //ruler.push("seat");
@@ -300,8 +277,7 @@ io.sockets.on("connection", (socket) => {
                     name: "clear",
                     msgs: msgs,
                 });
-            }
-            else if (ruler[cnm] == "node") {
+            } else if (ruler[cnm] == "node") {
                 ruler.length = cnm + 1;
                 break;
             } else if (ruler[cnm] == "msg") {

@@ -29,6 +29,7 @@ server.listen(5716, function () {
     console.log("listen port:5716")
 });
 io.sockets.on("connection", (socket) => {
+    console.log("userid:",socket.id);
     socket.on("line_start", function (msg) {
         var theLast;
         if (ruler.length == 0) {
@@ -37,11 +38,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+//
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -59,11 +56,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            //丢掉
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -247,17 +240,15 @@ io.sockets.on("connection", (socket) => {
     socket.on("node", function () {
         ruler.push("node");
         connid = "";
+        socket.emit("load", {
+            name: "load",
+            msgs: msgs,
+            chs: chs
+        })
     })
     socket.on("seat", function () {
-        if(connid!=""){
+        if(connid==""){
             connid=socket.id;
-        }
-        else {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
         }
     })
     socket.on("chehui", function () {

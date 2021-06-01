@@ -31,6 +31,7 @@ server.listen(5716, function () {
 io.sockets.on("connection", (socket) => {
     console.log("userid:",socket.id);
     socket.on("line_start", function (msg) {
+        console.log("line start:",connid);
         var theLast;
         if (ruler.length == 0) {
             theLast = "";
@@ -50,6 +51,7 @@ io.sockets.on("connection", (socket) => {
     })
     socket.on("line_moving", function (msg) {
         var theLast;
+        console.log("line moving:",connid);
         if (ruler.length == 0) {
             theLast = "";
         } else {
@@ -238,13 +240,15 @@ io.sockets.on("connection", (socket) => {
     })
 
     socket.on("node", function () {
-        ruler.push("node");
-        connid = "";
-        socket.emit("load", {
-            name: "load",
-            msgs: msgs,
-            chs: chs
-        })
+        if(socket.id==connid){
+            ruler.push("node");
+            connid = "";
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        }
     })
     socket.on("seat", function () {
         if(connid==""){

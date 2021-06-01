@@ -11,7 +11,6 @@ socket.on("change", function (ch) {
     dealCh(ch);
 })
 socket.on("load", function (data) {
-    console.log("收到load")
     $(svg).children().remove();
     if (data.msgs != null) {
         for (var i = 0; i < data.msgs.length; i++) {

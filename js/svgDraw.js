@@ -3,7 +3,7 @@ $(document).bind("selectstart",function(){return false;});
 var svg = document.querySelector('#svg');
 //flag变量：通信戳同步id
 //监听
-var socket = io.connect('http://www.lalila.top:5716');
+var socket = io.connect('http://localhost:5716');
 socket.on("message", function (msg) {
     dealMsg(msg);
 })

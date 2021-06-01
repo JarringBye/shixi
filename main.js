@@ -246,25 +246,19 @@ io.sockets.on("connection", (socket) => {
 
     socket.on("node", function () {
         ruler.push("node");
+        connid = "";
     })
     socket.on("seat", function () {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
+        if(connid!=""){
+            connid=socket.id;
         }
-        if (theLast != "node" && theLast != "") {
+        else {
             socket.emit("load", {
                 name: "load",
                 msgs: msgs,
                 chs: chs
             })
-        } else {
-
         }
-        //ruler.push("seat");
     })
     socket.on("chehui", function () {
         var cnm = ruler.length - 2;

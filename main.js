@@ -583,6 +583,7 @@ io.sockets.on("connection", (socket) => {
         ruler.push("node");
     })
 <<<<<<< HEAD
+<<<<<<< HEAD
     socket.on("seat", function () {
         console.log(ruler);
         var theLast;
@@ -591,6 +592,8 @@ io.sockets.on("connection", (socket) => {
         } else {
             theLast = ruler[ruler.length - 1];
 =======
+=======
+>>>>>>> parent of cc7cd55 (update)
     socket.on("seat",function (){
         var theLast = ruler.pop();
         if(theLast != "node"){

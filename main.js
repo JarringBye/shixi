@@ -2,15 +2,19 @@
 let express = require('express')
 let app = express();
 let server = require('http').Server(app);
-let io = require('socket.io')(server, {cors: true});
+let io = require('socket.io')(server,{cors : true});
 
-app.all("*", function (req, res, next) {
+app.all("*",function(req,res,next){
     //设置允许跨域的域名，*代表允许任意域名跨域
+<<<<<<< HEAD
     res.header("Access-Control-Allow-Origin", "http://localhost:5716");
+=======
+    res.header("Access-Control-Allow-Origin","http://www.lalila.top:5716");
+>>>>>>> parent of 62d9c32 (tongbu)
     //允许的header类型
-    res.header("Access-Control-Allow-Headers", "content-type");
+    res.header("Access-Control-Allow-Headers","content-type");
     //跨域允许的请求方式
-    res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+    res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
     if (req.method.toLowerCase() == 'options')
         res.send(200);  //让options尝试请求快速结束
     else
@@ -32,6 +36,7 @@ io.sockets.on("connection", (socket) => {
     console.log(socket.conn.id);
     console.log(socket.id);
     socket.on("line_start", function (msg) {
+<<<<<<< HEAD
         console.log(socket.id);
         var theLast;
         if (ruler.length == 0) {
@@ -52,278 +57,97 @@ io.sockets.on("connection", (socket) => {
             msg.flag = msgs.length;
             io.sockets.emit("message", msg);
         }
+=======
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "line_start";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
+>>>>>>> parent of 62d9c32 (tongbu)
     })
     socket.on("line_moving", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "line_moving";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "line_moving";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("sline_start", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "sline_start";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "sline_start";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("sline_moving", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "sline_moving";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "sline_moving";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("jiantou_start", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "jiantou_start";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "jiantou_start";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("jiantou_moving", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "jiantou_moving";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "jiantou_moving";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("rect_start", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "rect_start";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "rect_start";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("rect_moving", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "rect_moving";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "rect_moving";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("diamond_start", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "diamond_start";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "diamond_start";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("diamond_moving", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "diamond_moving";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "diamond_moving";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("circle_start", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "circle_start";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "circle_start";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("circle_moving", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "circle_moving";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "circle_moving";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("text", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            msgs.push(msg);
-            ruler.push("msg");
-            msg.name = "text";
-            msg.flag = msgs.length;
-            io.sockets.emit("message", msg);
-        }
-
+        msgs.push(msg);
+        ruler.push("msg");
+        msg.name = "text";
+        msg.flag = msgs.length;
+        io.sockets.emit("message", msg);
     })
     socket.on("clear", function () {
         msgs.length = 0;
@@ -341,204 +165,60 @@ io.sockets.on("connection", (socket) => {
         });
     });
     socket.on("tuodong_moving", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
+        if (ch.x != null && ch.y != null) {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "tuodong_moving";
+            socket.broadcast.emit("change", ch);
         }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            if (ch.x != null && ch.y != null) {
-                chs.push(ch);
-                ruler.push("ch");
-                ch.name = "tuodong_moving";
-                socket.broadcast.emit("change", ch);
-            }
-        }
-
     })
     socket.on("remove", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "remove";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "remove";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("fillcolor", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "fillcolor";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "fillcolor";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("rectbh", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "rectbh";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "rectbh";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("circlebh", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "circlebh";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "circlebh";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("linebh", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "linebh";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "linebh";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("pathbh", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "pathbh";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "pathbh";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("polygonbh", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "polygonbh";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "polygonbh";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("textbh", function (ch) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "textbh";
-            socket.broadcast.emit("change", ch);
-        }
-
+        chs.push(ch);
+        ruler.push("ch");
+        ch.name = "textbh";
+        socket.broadcast.emit("change", ch);
     })
     socket.on("tubiao_build", function (msg) {
         msgs.push(msg);
@@ -556,22 +236,6 @@ io.sockets.on("connection", (socket) => {
         socket.emit("message", msg);
     })
     socket.on("clone", function (msg) {
-        console.log(ruler);
-        var theLast;
-        if (ruler.length == 0) {
-            theLast = "";
-        } else {
-            theLast = ruler[ruler.length - 1];
-        }
-        if (theLast != "node" && theLast != "") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
-        } else {
-
-        }
         msgs.push(msg);
         ruler.push("msg");
         msg.name = "clone";
@@ -582,6 +246,7 @@ io.sockets.on("connection", (socket) => {
     socket.on("node", function () {
         ruler.push("node");
     })
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     socket.on("seat", function () {
@@ -596,11 +261,17 @@ io.sockets.on("connection", (socket) => {
 >>>>>>> parent of cc7cd55 (update)
     socket.on("seat",function (){
         var theLast = ruler.pop();
+=======
+    socket.on("seat",function (){
+        console.log(ruler);
+        var theLast = ruler[ruler.length-1];
+>>>>>>> parent of 62d9c32 (tongbu)
         if(theLast != "node"){
             socket.emit("load",{
                 name:"load",
                 msgs:msgs,
                 chs:chs
+<<<<<<< HEAD
             })
 >>>>>>> parent of cc7cd55 (update)
         }
@@ -609,8 +280,11 @@ io.sockets.on("connection", (socket) => {
                 name: "load",
                 msgs: msgs,
                 chs: chs
+=======
+>>>>>>> parent of 62d9c32 (tongbu)
             })
-        } else {
+        }
+        else{
 
         }
         //ruler.push("seat");
@@ -626,7 +300,8 @@ io.sockets.on("connection", (socket) => {
                     name: "clear",
                     msgs: msgs,
                 });
-            } else if (ruler[cnm] == "node") {
+            }
+            else if (ruler[cnm] == "node") {
                 ruler.length = cnm + 1;
                 break;
             } else if (ruler[cnm] == "msg") {

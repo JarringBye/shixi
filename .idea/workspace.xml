@@ -21,11 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="329db8c6-7b8d-42a4-86e9-174797f58580" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/draw.html" beforeDir="false" afterPath="$PROJECT_DIR$/draw.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/keyboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/keyboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/kongjian.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/kongjian.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/svgDraw.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/svgDraw.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/svgdianji.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/svgdianji.js" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/js/svgDraw.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/svgDraw.js" afterDir="false" />
+>>>>>>> parent of 62d9c32 (tongbu)
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,6 +80,7 @@
       <workItem from="1621939286279" duration="216000" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1622029819854" duration="55269000" />
       <workItem from="1622548799650" duration="3742000" />
 =======
@@ -84,6 +89,9 @@
 =======
       <workItem from="1622029819854" duration="51966000" />
 >>>>>>> parent of cc7cd55 (update)
+=======
+      <workItem from="1622029819854" duration="53547000" />
+>>>>>>> parent of 62d9c32 (tongbu)
     </task>
     <servers />
   </component>
@@ -100,7 +108,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="183" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1622031351933">

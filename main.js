@@ -26,12 +26,10 @@ io.on('connection', function () {
 });
 // 最好不要直接监听在80端口，改成8888
 server.listen(5716, function () {
-    console.log("listen port:5716")
 });
 io.sockets.on("connection", (socket) => {
-    console.log("userid:",socket.id);
+
     socket.on("line_start", function (msg) {
-        console.log("line start:",connid);
         var theLast;
         if (ruler.length == 0) {
             theLast = "";
@@ -39,7 +37,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-//
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -51,14 +49,13 @@ io.sockets.on("connection", (socket) => {
     })
     socket.on("line_moving", function (msg) {
         var theLast;
-        console.log("line moving:",connid);
         if (ruler.length == 0) {
             theLast = "";
         } else {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            //丢掉
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -76,11 +73,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -97,11 +90,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -118,11 +107,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -139,11 +124,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -161,11 +142,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -182,11 +159,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -203,11 +176,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -224,11 +193,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -245,11 +210,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -266,11 +227,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -287,11 +244,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -323,11 +276,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             if (ch.x != null && ch.y != null) {
                 chs.push(ch);
@@ -345,11 +294,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -366,11 +311,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -387,11 +328,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -408,11 +345,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -429,11 +362,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -450,11 +379,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -471,11 +396,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -492,11 +413,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             chs.push(ch);
             ruler.push("ch");
@@ -513,11 +430,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -543,11 +456,7 @@ io.sockets.on("connection", (socket) => {
             theLast = ruler[ruler.length - 1];
         }
         if (theLast != "node" && socket.id!=connid&&connid!="") {
-            socket.emit("load", {
-                name: "load",
-                msgs: msgs,
-                chs: chs
-            })
+            socket.emit("tips");
         } else {
             msgs.push(msg);
             ruler.push("msg");
@@ -575,27 +484,38 @@ io.sockets.on("connection", (socket) => {
         }
     })
     socket.on("chehui", function () {
-        var cnm = ruler.length - 2;
-        for (; cnm >= 0; cnm--) {
-            if (cnm == 0) {
-                msgs.length = 0;
-                chs.length = 0;
-                ruler.length = 0;
-                io.sockets.emit("message", {
-                    name: "clear",
-                    msgs: msgs,
-                });
-            } else if (ruler[cnm] == "node") {
-                ruler.length = cnm + 1;
-                break;
-            } else if (ruler[cnm] == "msg") {
-                msgs.pop();
-                continue;
-            } else if (ruler[cnm] = "ch") {
-                chs.pop();
-                continue;
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("tips");
+        } else {
+            var cnm = ruler.length - 2;
+            for (; cnm >= 0; cnm--) {
+                if (cnm == 0) {
+                    msgs.length = 0;
+                    chs.length = 0;
+                    ruler.length = 0;
+                    io.sockets.emit("message", {
+                        name: "clear",
+                        msgs: msgs,
+                    });
+                } else if (ruler[cnm] == "node") {
+                    ruler.length = cnm + 1;
+                    break;
+                } else if (ruler[cnm] == "msg") {
+                    msgs.pop();
+                    continue;
+                } else if (ruler[cnm] = "ch") {
+                    chs.pop();
+                    continue;
+                }
             }
         }
+
         io.sockets.emit("load", {
             name: "load",
             msgs: msgs,

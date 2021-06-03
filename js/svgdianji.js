@@ -64,9 +64,9 @@ $("#pointer").click(function () {
                 startx = e.offsetX;
                 starty = e.offsetY;
                 //弹窗
-                document.getElementById("tanchuang").setAttribute("style", "display:block");
+                document.getElementById("tanchuang_1").setAttribute("style", "display:block");
                 var hide = function () {
-                    $("#tanchuang").fadeOut("slow");
+                    $("#tanchuang_1").fadeOut("slow");
                 }
                 setTimeout(hide, 1000)
             } else {//多选

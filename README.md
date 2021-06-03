@@ -27,3 +27,9 @@ node main.js
 ``
 forever start main.js
 ``
+
+停止forever工作：
+
+``
+forever stop main.js
+``

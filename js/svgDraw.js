@@ -29,7 +29,15 @@ socket.on("load", function (data) {
         }
     }
     clear_op();
-});
+})
+socket.on("tips",function (){
+    //弹窗
+    document.getElementById("tanchuang_2").setAttribute("style", "display:block");
+    var hide = function () {
+        $("#tanchuang_1").fadeOut("slow");
+    }
+    setTimeout(hide, 1000)
+})
 var path;
 var sline;
 var rect_o;

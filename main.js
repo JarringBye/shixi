@@ -69,81 +69,236 @@ io.sockets.on("connection", (socket) => {
 
     })
     socket.on("sline_start", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "sline_start";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "sline_start";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("sline_moving", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "sline_moving";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "sline_moving";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("jiantou_start", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "jiantou_start";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "jiantou_start";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("jiantou_moving", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "jiantou_moving";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "jiantou_moving";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
+
     })
     socket.on("rect_start", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "rect_start";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "rect_start";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("rect_moving", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "rect_moving";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "rect_moving";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("diamond_start", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "diamond_start";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "diamond_start";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("diamond_moving", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "diamond_moving";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "diamond_moving";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("circle_start", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "circle_start";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "circle_start";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("circle_moving", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "circle_moving";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "circle_moving";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("text", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "text";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "text";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
     })
     socket.on("clear", function () {
         msgs.length = 0;
@@ -161,67 +316,216 @@ io.sockets.on("connection", (socket) => {
         });
     });
     socket.on("tuodong_moving", function (ch) {
-        if (ch.x != null && ch.y != null) {
-            chs.push(ch);
-            ruler.push("ch");
-            ch.name = "tuodong_moving";
-            socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            if (ch.x != null && ch.y != null) {
+                chs.push(ch);
+                ruler.push("ch");
+                ch.name = "tuodong_moving";
+                socket.broadcast.emit("change", ch);
+            }
         }
     })
     socket.on("remove", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "remove";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "remove";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("fillcolor", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "fillcolor";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "fillcolor";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("rectbh", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "rectbh";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "rectbh";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("circlebh", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "circlebh";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "circlebh";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("linebh", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "linebh";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "linebh";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("pathbh", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "pathbh";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "pathbh";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("polygonbh", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "polygonbh";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "polygonbh";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("textbh", function (ch) {
-        chs.push(ch);
-        ruler.push("ch");
-        ch.name = "textbh";
-        socket.broadcast.emit("change", ch);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            chs.push(ch);
+            ruler.push("ch");
+            ch.name = "textbh";
+            socket.broadcast.emit("change", ch);
+        }
+
     })
     socket.on("tubiao_build", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "tubiao_build";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "tubiao_build";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
+
     })
     socket.on("selector_start", function (msg) {
         msg.name = "selector_start";
@@ -232,11 +536,26 @@ io.sockets.on("connection", (socket) => {
         socket.emit("message", msg);
     })
     socket.on("clone", function (msg) {
-        msgs.push(msg);
-        ruler.push("msg");
-        msg.name = "clone";
-        msg.flag = msgs.length;
-        io.sockets.emit("message", msg);
+        var theLast;
+        if (ruler.length == 0) {
+            theLast = "";
+        } else {
+            theLast = ruler[ruler.length - 1];
+        }
+        if (theLast != "node" && socket.id!=connid&&connid!="") {
+            socket.emit("load", {
+                name: "load",
+                msgs: msgs,
+                chs: chs
+            })
+        } else {
+            msgs.push(msg);
+            ruler.push("msg");
+            msg.name = "clone";
+            msg.flag = msgs.length;
+            io.sockets.emit("message", msg);
+        }
+
     })
 
     socket.on("node", function () {

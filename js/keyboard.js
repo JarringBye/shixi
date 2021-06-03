@@ -1,6 +1,6 @@
 document.onkeydown = function (e) {
     if ($('#pointer').parent().hasClass('toolbar-active')) {
-        if (e.keyCode == 70) {//填充
+        if (e.keyCode == 70) {//---------------------------------------------------填充
             socket.emit("seat");
             if (dx != true) {//单选
                 if (change != false) {
@@ -29,7 +29,7 @@ document.onkeydown = function (e) {
             }
 
         }
-        if (e.keyCode == 8) {//删除
+        if (e.keyCode == 8) {//------------------------------------------------------删除
             socket.emit("seat");
             if (dx != true) {//单选
                 if (change != false) {
@@ -82,7 +82,7 @@ document.onkeydown = function (e) {
                 }
             }
         }
-        if ((e.keyCode == 86) && (e.ctrlKey)) {//克隆 ctrl+v
+        if ((e.keyCode == 86) && (e.ctrlKey)) {//-----------------------------------克隆 ctrl+v
             socket.emit("seat");
             if (dx != true) {
                 if (change != false) {

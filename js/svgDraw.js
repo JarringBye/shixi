@@ -34,7 +34,15 @@ socket.on("tips",function (){
     //弹窗
     document.getElementById("tanchuang_2").setAttribute("style", "display:block");
     var hide = function () {
-        $("#tanchuang_1").fadeOut("slow");
+        $("#tanchuang_2").fadeOut("slow");
+    }
+    setTimeout(hide, 1000)
+})
+socket.on("warning",function (){
+    //弹窗
+    document.getElementById("tanchuang_3").setAttribute("style", "display:block");
+    var hide = function () {
+        $("#tanchuang_3").fadeOut("slow");
     }
     setTimeout(hide, 1000)
 })

@@ -260,6 +260,7 @@ io.sockets.on("connection", (socket) => {
             name: "clear",
             msgs: msgs,
         });
+        socket.emit("warning");
     })
     socket.on("load", function () {
         socket.emit("load", {

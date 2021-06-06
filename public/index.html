@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>UESTC协同画板</title>
+    <script src="socket.io/socket.io.js"></script>
+    <style type="text/css">
+        input,
+        html,
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*background: #cccccc;*/
+        }
+
+        #top {
+            width: 400px;
+            height: auto;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+            font-size: xx-large;
+            text-align: center;
+        }
+
+        #mid {
+            width: 400px;
+            height: 50px;
+            position: absolute;
+            top: 200px;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+            /*display: inline-block;*/
+        }
+
+        #bottom {
+            width: 400px;
+            height: auto;
+            position: absolute;
+            top: 500px;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        #fangjianhao {
+            width: 300px;
+            height: 42px;
+            float: left;
+        }
+
+
+        #search {
+            background: #222;
+            width: 30px;
+            height: 30px;
+            -webkit-mask-size: 30px;
+            -webkit-mask: url(image/search.svg) no-repeat 0 0;
+            float: left;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+
+        #xinjian {
+            background: #222;
+            width: 30px;
+            height: 30px;
+            -webkit-mask-size: 30px;
+            -webkit-mask: url(image/xinjian.svg) no-repeat 0 0;
+            float: left;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+
+        .anniu {
+            position: relative;
+        }
+
+        .anniu:active {
+            top: 2px;
+            opacity: 50%;
+        }
+
+        span {
+            display: inline-block;
+            font-size: small;
+            font-family: "MicrosoftYaHei";
+        }
+    </style>
+
+</head>
+<body>
+<div id="top">
+    SVG画板协同平台
+</div>
+<div id="mid">
+    <input type="search" id="fangjianhao" name="roomid" value="" placeholder="请输入六位房间号从而加入或者创建房间">
+    <input type="button" value="" id="search" class="anniu" onclick="search_f($('#fangjianhao').val())">
+    <input type="button" value="" id="xinjian" class="anniu" onclick="xinjian_f()">
+</div>
+<div id="bottom">
+    <span>
+        使用须知：
+    </span>
+    <span>    1.输入房间号并查询将加入房间(包括空房间)，点击创建按钮将创建并加入一个随机房间号的空房间。
+</span>
+    <span>    2.此项目不保证机密性，即未设置密码功能。
+</span>
+</div>
+<script src="js/jquery.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+    var socket = io();
+    socket.on("xinjian", function (m) {
+        window.location.href = "/room/room_" + m.roomid;
+    })
+
+    function search_f(roomid) {
+        console.log(roomid);
+        if (roomid.match(/\d\d\d\d\d\d/) && roomid.length == 6) {
+            window.location.href = "/room/room_" + roomid;
+        }
+    }
+
+    function xinjian_f() {
+        socket.emit("xinjian");
+    }
+
+
+</script>
+</body>
+</html>

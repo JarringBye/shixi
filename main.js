@@ -1,4 +1,5 @@
 //改动一下， 提出express
+//改动一下， 提出express
 let express = require('express')
 var path = require('path');
 let app = express();
@@ -63,6 +64,7 @@ io.on("connection", (socket) => {
     } else {
         var roomID = splited[splited.length - 1].match(/[- +]?\d+/g)[0];   // 获取房间ID
         if (socket.adapter.rooms.get(roomID) == null) {
+            console.log("room null");
             var info = new Object();
             info.msgs = [];
             info.chs = [];
@@ -71,12 +73,13 @@ io.on("connection", (socket) => {
         }
         socket.join(roomID);
         mem_m.set(socket.id, roomID);
+        console.log(roomID);
     }
 
     socket.on("xinjian", function () {
         // 循环N次生成随机数
         var roomid;
-        do{
+        do {
             array.length = 0;
             for (var i = 0; ; i++) {
                 if (array.length < 6) {
@@ -86,18 +89,36 @@ io.on("connection", (socket) => {
                 }
             }
             roomid = array.join('');
-        }while (socket.adapter.rooms.get(roomid) == 'undefined')
+        } while (socket.adapter.rooms.get(roomid) == 'undefined')
         socket.emit("xinjian", {
             roomid: roomid,
         });
     })
-    socket.on('disconnect',function (){
-        var roomid = mem_m.get(socket.id);
-        socket.leave(roomid);
-        mem_m.delete(socket.id);
-        if(socket.adapter.rooms.get(roomid)=='undefined'){
-            info_m.delete(roomid);
+    socket.on('disconnect', function () {
+        if (splited.length != 4) {
+            var roomid = mem_m.get(socket.id);
+            var connid = connid_m.get(roomid);
+            console.log(roomid,info_m);
+            var ruler = info_m.get(roomid).ruler;
+            var msgs = info_m.get(roomid).msgs;
+            var chs = info_m.get(roomid).chs;
+            if (connid == socket.id) {
+                ruler.push("node");
+                connid_m.set(roomid, "");
+                socket.broadcast.to(roomid).emit("load", {
+                    name: "load",
+                    msgs: msgs,
+                    chs: chs
+                })
+            }
         }
+
+        // var roomid = mem_m.get(socket.id);
+        // socket.leave(roomid);
+        // mem_m.delete(socket.id);
+        // if (socket.adapter.rooms.get(roomid) == 'undefined') {
+        //     info_m.delete(roomid);
+        // }
     })
     socket.on("line_start", function (msg) {
         var roomid = mem_m.get(socket.id);
@@ -105,6 +126,7 @@ io.on("connection", (socket) => {
         var msgs = info_m.get(roomid).msgs;
         var connid = connid_m.get(roomid);
         var theLast;
+        // console.log(ruler);
         if (ruler.length == 0) {
             theLast = "";
         } else {
@@ -619,8 +641,10 @@ io.on("connection", (socket) => {
         socket.emit("message", msg);
     })
     socket.on("clone", function (msg) {
+        console.log("shoudao");
         var roomid = mem_m.get(socket.id);
         var ruler = info_m.get(roomid).ruler;
+        console.log(ruler);
         var msgs = info_m.get(roomid).msgs;
         var connid = connid_m.get(roomid);
         var theLast;
@@ -637,11 +661,13 @@ io.on("connection", (socket) => {
             msg.name = "clone";
             msg.flag = msgs.length;
             io.sockets.in(roomid).emit("message", msg);
+            console.log("转发");
         }
 
     })
 
     socket.on("node", function () {
+        console.log("node");
         var roomid = mem_m.get(socket.id);
         var ruler = info_m.get(roomid).ruler;
         var chs = info_m.get(roomid).chs;
@@ -650,7 +676,7 @@ io.on("connection", (socket) => {
         if (socket.id == connid) {
             ruler.push("node");
             connid_m.set(roomid, "");
-            io.sockets.in(roomid).emit("load", {
+            socket.broadcast.to(roomid).emit("load", {
                 name: "load",
                 msgs: msgs,
                 chs: chs
@@ -661,6 +687,7 @@ io.on("connection", (socket) => {
         var roomid = mem_m.get(socket.id);
         var connid = connid_m.get(roomid);
         if (connid == "" || connid == undefined) {
+            console.log("hello");
             connid_m.set(roomid, socket.id);
         }
     })

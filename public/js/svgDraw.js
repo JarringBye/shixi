@@ -93,6 +93,7 @@ function dealMsg(msg) {
     } else if (msg.name == "tubiao_build") {
         draw_tubiaoku(msg);
     } else if (msg.name == "clone") {
+        console.log("收到克隆");
         node_clone(msg);
     } else {
     }
@@ -446,6 +447,7 @@ function draw_tubiaoku(msg) {
 }
 
 function node_clone(msg) {
+    console.log(msg);
     var id = "svg_" + msg.id;
     var flag = msg.flag;
     var pianyi = msg.pianyi;
@@ -455,13 +457,17 @@ function node_clone(msg) {
     var newpianyix = parseInt(pianyi[0]) + 5;
     var newpianyiy = parseInt(pianyi[1]) + 5;
     var pianyis = "translate(" + newpianyix.toString() + "," + newpianyiy.toString() + ")";
+    clone_node.setAttribute("opacity", '0.5');
     clone_node.setAttribute("transform", pianyis);
+
     if(msg.duoxuan!=true){
-        clone_node.setAttribute("opacity","");
+        console.log("danxuan");
+        // clone_node.setAttribute("opacity","");
     }
     else{
         idarray.push(newid);
-        clone_node.setAttribute("opacity","0.5");
+        clone_node.setAttribute("opacity", 0.5);
+        console.log(clone_node);
     }
     $("#svg").append(clone_node);
 }

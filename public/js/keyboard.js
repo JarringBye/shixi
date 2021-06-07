@@ -86,6 +86,7 @@ document.onkeydown = function (e) {
             socket.emit("seat");
             if (dx != true) {
                 if (change != false) {
+                    console.log("danxuan");
                     // var clone_id = document.getElementById("svg").lastChild.children[0].getAttribute("id").match(/[- +]?\d+/g)[0];
                     var pianyi = document.getElementById(br).parentElement.getAttribute("transform").match(/[- +]?\d+/g);
                     socket.emit("clone", {
@@ -99,6 +100,7 @@ document.onkeydown = function (e) {
             } else {//多选
                 var i = 0;
                 var cida = new Array();
+                console.log(idarray.length);
                 while(i<idarray.length){
                     var e = idarray[i];
                     cida.push(e);
@@ -107,6 +109,7 @@ document.onkeydown = function (e) {
                 idarray.length = 0;
                 i=0;
                 while (i < cida.length) {
+                    console.log(cida,i);
                     var reg = /[1-9][0-9]*/g;
                     id = cida[i].match(reg)[0];
                     var pianyi = document.getElementById(cida[i]).parentElement.getAttribute("transform").match(/[- +]?\d+/g);

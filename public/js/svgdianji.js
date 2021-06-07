@@ -130,11 +130,13 @@ $("#pointer").click(function () {
         if ($('#pointer').parent().hasClass('toolbar-active')) {
             if (change != false) {//如果鼠标按键是按下的
                 change = false;//设置按键抬起标识
+                idarray.length=0;
                 var chx = e.offsetX - startx;
                 var chy = e.offsetY - starty;
                 if (dx == false) {//单选
                     var idd = "svg_" + id;
                     document.getElementById(idd).parentElement.removeAttribute("opacity");//恢复透明度
+                    console.log("move");
                     socket.emit("tuodong_moving", {
                         x: chx,
                         y: chy,
@@ -151,11 +153,13 @@ $("#pointer").click(function () {
                             y: chy,
                             id: id
                         })
+                        console.log(chx,chy);
                         ++i;
                     }
                 }
-                socket.emit("node");
             }
+            socket.emit("node");
+            console.log(idarray);
         }
     })
     $('#workspace').mouseleave(function (e) {
@@ -179,6 +183,8 @@ $("#pointer").click(function () {
                 } else {
                     var k = "svg_" + id;
                     document.getElementById(k).parentElement.removeAttribute("opacity");
+                    console.log("move");
+
                     var chx = e.offsetX - startx;
                     var chy = e.offsetY - starty;
                     socket.emit("tuodong_moving", {
@@ -217,6 +223,7 @@ $("#pointer").click(function () {
             var i = 0;
             while (i < length) {
                 node.removeAttribute("opacity");
+                console.log("move");
                 node = node.nextSibling;
                 ++i;
             }

@@ -10,11 +10,9 @@
 sudo npm install --save
 ``
 
-安装forever:
+~~安装forever:~~
 
-``
-sudo npm install forever
-``
+~~sudo npm install forever~~
 
 使用node.js启动：
 
